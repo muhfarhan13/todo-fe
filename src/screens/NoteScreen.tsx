@@ -19,11 +19,12 @@ import Modal from "react-native-modal";
 const NoteScreen = ({ navigation, route }: any) => {
   const params = route?.params || {};
 
+  console.log(params?.noteDate);
   const [id, setId] = useState<number | null>(params?.noteId || null);
   const [title, setTitle] = useState<string>(params?.noteTitle || "");
   const [text, setText] = useState<string>(params?.note || "");
   const [mark, setMark] = useState<boolean>(params?.mark || false);
-  const [noteDate, setNoteDate] = useState<string>("");
+  const [noteDate, setNoteDate] = useState<string>(params?.noteDate || "");
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
 
@@ -92,7 +93,7 @@ const NoteScreen = ({ navigation, route }: any) => {
   }, [title, text, mark, noteDate]);
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container} keyboardVerticalOffset={100}>
+    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.innerContainer}>
           <View style={styles.rowBetween}>

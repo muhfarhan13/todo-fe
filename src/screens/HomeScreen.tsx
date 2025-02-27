@@ -48,6 +48,7 @@ const HomeScreen = ({ navigation }: any) => {
         navigation.navigate("Note", {
           noteId: item.id,
           noteTitle: item.title,
+          noteDate: item.note_date,
           note: item.note,
           mark: item.mark,
         })
